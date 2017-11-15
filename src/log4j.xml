@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- 控制台配置 -->
+	<appender name="log.console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p (%C:%M) - %m%n" />
+		</layout>
+		<!-- -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter"> 
+				<param name="levelMin" 		value="info" /> 
+				<param name="levelMax" 		value="info" /> 
+				<param name="AcceptOnMatch" value="true" /> 
+		</filter>
+		 
+	</appender>
+	<!-- 文件配置 -->
+	<appender name="log.file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" 			value="D:\\atguigu4XML.log" />
+		<param name="Append" 		value="true" />
+		<param name="DatePattern" 	value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{HH:mm:ss,SSS} %5p (%C{1}:%M) - %m%n" />
+		</layout>
+	</appender>
+	
+	<!--设置文件夹日志输出级别 --> 
+	<logger name="com.log"  additivity="true">
+		<level value="debug" />
+		<!-- 输出到控制台 -->
+		<appender-ref ref="log.console" />
+		<!-- 输出到文件 -->
+		<appender-ref ref="log.file" />
+	</logger>
+	 <!-- 
+	<logger name="com.atguigu.dao" additivity="false">
+		<level value="error" />
+		<appender-ref ref="log.console" />
+		<appender-ref ref="log.file" />
+	</logger>-->
+	<!-- 设置全局日志输出级别 -->
+	<root>
+		<!-- <level value="error" /> -->
+		<appender-ref ref="log.console" />
+		<appender-ref ref="log.file" />
+	</root>	 
+ 
+
+</log4j:configuration>
