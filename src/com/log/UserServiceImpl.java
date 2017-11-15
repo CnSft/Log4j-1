@@ -31,6 +31,7 @@ public class UserServiceImpl
 		logger.warn("main(String[]) - warn");
 		logger.error("main(String[]) - error");	
 		logger.error("main(String[]) - error");	
+		logger.error("main(String[]) - error");	
 	}
 
 }
